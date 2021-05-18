@@ -9,7 +9,7 @@ route.post('/', async (req, res, next) => {
     const isExisted = await rateModel.findOne({
         place_id: placeId,
         device_id: deviceId,
-    }) 
+    })
     let saved;
     if (isExisted) {
         isExisted.rate = rate;
@@ -20,7 +20,7 @@ route.post('/', async (req, res, next) => {
             device_id: deviceId,
             rate: rate
         })
-        saved = await rated.save()
+        saved = await rated.save();
     }
     const averagePerPlace = await rateModel.aggregate([
         {
@@ -29,17 +29,17 @@ route.post('/', async (req, res, next) => {
             }
         },
         {
-            $group: { 
-                _id: placeId, 
-                average: { 
-                    $avg: '$rate' 
+            $group: {
+                _id: placeId,
+                average: {
+                    $avg: '$rate'
                 },
                 count: {
                     "$sum": 1
                 }
             },
         }
-    ]).exec()
+    ]).exec();
 
     console.log(averagePerPlace);
 
@@ -48,13 +48,13 @@ route.post('/', async (req, res, next) => {
     place.rate = averagePerPlace[0].average;
     place.rate_times = averagePerPlace[0].count;
 
-    const updated = await place.save()
+    const updated = await place.save();
 
     return res.status(200).json({
         success: true,
         doc: updated,
-    })
+    });
 
-})
+});
 
-module.exports = route
+module.exports = route;

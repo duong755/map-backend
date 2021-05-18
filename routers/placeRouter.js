@@ -15,7 +15,7 @@ route.get('/', async (req, res, next) => {
             query = {
                 $text: {
                     $search: q
-                }, 
+                },
             }
         }
 
@@ -41,4 +41,4 @@ route.get('/', async (req, res, next) => {
     }
 })
 
-module.exports = route
+module.exports = route;
