@@ -26,7 +26,7 @@
                     {
                         "in": "query",
                         "name": "maxDistance",
-                        "description": "Giới hạn tìm trong khoảng cách xa nhất có thể, tính từ cặp (kinh độ, vĩ độ) cung cấp trên"
+                        "description": "Giới hạn khoảng cách tìm kiếm (đơn vị kilometer), tính từ cặp (kinh độ, vĩ độ) cung cấp trên"
                     }
                 ]
             }
