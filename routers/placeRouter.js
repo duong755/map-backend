@@ -14,7 +14,7 @@ route.get('/', async (req, res, next) => {
         if (q) {
             query = {
                 $text: {
-                    $search: q
+                    $search: `\"${q}\"`
                 },
             }
         }
